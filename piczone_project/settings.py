@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'piczone_app.apps.Piczone_appConfig',
+    'piczone_app.apps.PiczoneAppConfig',
     'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
