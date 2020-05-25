@@ -4,21 +4,51 @@ import datetime as dt
 
 class TestImage(TestCase):
     def setUp(self):
-        self.location = Location(name='Kenya')
+        self.location = Location(name='kenya')
         self.location.save_location()
 
         self.category = Category(name='nature')
         self.category.save_category()
 
-        self.image_test = Image( image = image='test.jpg'name='test_name', description='test_description', location=self.location,
+        self.image_test = Image(id=1,image='test.jpg',name='test_name', description='test_description', location=self.location,
                                 category=self.category)
+        
+        self.image_test.save_image()
 
     def test_instance(self):
         self.assertTrue(isinstance(self.image_test, Image))
 
-    def test_save_method(self):
-        self.photo.save_photo()
-        photos = Photo.objects.all()
-        self.assertTrue(len(photos) > 0)
+    def test_save_image(self):
+        self.image_test.save_image()
+        images = Image.objects.all()
+        self.assertTrue(len(images) > 0)
+
+    def test_search_image_by_category(self):
+        category = 'nature'
+        image= self.image_test.search_image_by_category(category)
+        self.assertTrue(len(image) > 0)
+
+    
+    def test_search_image_by_location(self):
+        self.image_test.save_image()
+        found_images = self.image_test.filter_by_location(location='kenya')
+        self.assertTrue(len(found_images) > 0)
+
+    def test_update_image(self):
+        self.image_test.update_image(self.image_test.id, 'update_test.jpg')
+        new_image = Image.objects.filter(image='update_test.jpg')
+        self.assertTrue(len(new_image) > 0)
+
+    def test_delete_image(self):
+        self.image_test.delete_image()
+        images = Image.objects.all()
+        self.assertTrue(len(images) == 0)
+
+    def tearDown(self):
+        Image.objects.all().delete()
+        Location.objects.all().delete()
+        Category.objects.all().delete()
+
+    
 
 
