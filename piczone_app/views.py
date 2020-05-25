@@ -14,6 +14,13 @@ def category_filter(request, category):
     images = Image.search_image_by_category(category)
     return render(request, 'category.html', {'images': images})
 
-def search_results(request, search_term)
-    images = Image.search_image_by_category(category)
-    return render(request, 'search.html', {'images': images})
+def search_results(request):
+    if 'searched_image' in request.GET and request.GET["searched_image"]:
+        category = request.GET.get("searched_image")
+        images = Image.search_image_by_category(category)
+        message = f"{category}"
+        return render(request, 'search.html', {"message": message, "images": images})
+    else:
+        message = "You haven't searched for any image category"
+        return render(request, 'search.html', {"message": message})
+    

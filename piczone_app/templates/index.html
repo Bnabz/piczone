@@ -6,9 +6,15 @@
 {{block.super}}
 
 <div class="container-fluid">
+    <div id="heading">
+
+        <h1>"A Thousand Words".</h1>
+      
+    </div>
+
     <div id="image-display">
         {% for image in images%}
-        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 hover ">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 hover ">
             <img class="image img-responsive" src="{{image.image.url}}" data-toggle="modal" data-target="#image-modal-{{image.id}}">       
         </div>
 
