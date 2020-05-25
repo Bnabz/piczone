@@ -29,6 +29,8 @@ class Image(models.Model):
     @classmethod
     def filter_by_location(cls, location):
         return cls.objects.filter(location__name=location).all()
+
+    
         
     @classmethod
     def update_image(cls, id, new_img):
