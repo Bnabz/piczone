@@ -8,7 +8,7 @@
 <div class="container-fluid">
     <div id="image-display">
         {% for image in images%}
-        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4  ">
+        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 hover ">
             <img class="image img-responsive" src="{{image.image.url}}" data-toggle="modal" data-target="#image-modal-{{image.id}}">       
         </div>
 
@@ -17,14 +17,14 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="image-modalTitle">{{image.name}}</h5>
+                    <h4 class="modal-title" id="image-modalTitle">{{image.name}}</h4>
                 </div>
                 <div class="modal-body">
                     <img src="{{image.image.url}}" alt="">
-                    <p>Description: {{image.description}}</p>
-                    <p>Category: {{image.category}}</p>
-                    <p>Location: {{image.location}}</p>
-                    <p>Uploaded On: {{image.upload_date}}</p>
+                    <p><b>Description:</b> {{image.description}}</p>
+                    <p><b>Category:</b> {{image.category}}</p>
+                    <p><b>Location:</b> {{image.location}}</p>
+                    <p><b>Uploaded On:</b> {{image.upload_date}}</p>
                 </div>
                 <div class="modal-footer">
                     <input class="form-control input-lg" type="text"
