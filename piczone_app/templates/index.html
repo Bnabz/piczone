@@ -4,15 +4,23 @@
 
 {% block content %}
 {{block.super}}
-<div class="card-columns">
-    {% for image in images %}
-    <div class="card" data-toggle="modal" data-target="#{{image.id}}">
-        <img src="{{image.image.url}}" alt="{{image.name}}" class="card-img">
+
+<div class="container-fluid">
+    <div id="image-display">
+        {% for image in images%}
+        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4  ">
+            <img onclick="showModal('{{image.name}}','{{image.description}}','{{image.image.url}}','{{image.location}}','{{image.category}}')"
+                class="image img-responsive" src="{{image.image.url}}">
+        </div>
+        {% endfor%}
+
     </div>
 
-
-    
-    {% endfor %}
 </div>
+
+
+
+
+
 
 {% endblock %}

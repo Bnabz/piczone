@@ -3,3 +3,13 @@ body {
     color: #333333;
    
   }
+
+ 
+
+#image-display img{
+    height: 350px;
+    width: 500px;
+    padding:10px;
+    border-radius:5%;
+    object-fit: cover;
+}
