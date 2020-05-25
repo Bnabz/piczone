@@ -9,11 +9,35 @@
     <div id="image-display">
         {% for image in images%}
         <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4  ">
-            <img onclick="showModal('{{image.name}}','{{image.description}}','{{image.image.url}}','{{image.location}}','{{image.category}}')"
-                class="image img-responsive" src="{{image.image.url}}">
+            <img class="image img-responsive" src="{{image.image.url}}" data-toggle="modal" data-target="#image-modal-{{image.id}}">       
         </div>
-        {% endfor%}
 
+        <div class="modal fade" id="image-modal-{{image.id}}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{image.name}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{image.image.url}}" alt="">
+                    <p>Description: {{image.description}}</p>
+                    <p>Category: {{image.category}}</p>
+                    <p>Location: {{image.location}}</p>
+                    <p>Uploaded On: {{image.upload_date}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        {% endfor%}
     </div>
 
 </div>
