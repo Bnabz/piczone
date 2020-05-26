@@ -1,0 +1,1 @@
+ web: gunicorn piczone_project.wsgi --log-file -
